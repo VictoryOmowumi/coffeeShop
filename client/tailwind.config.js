@@ -26,6 +26,7 @@ module.exports = {
         sans: ['Lato', 'sans-serif'],
         serif: ['Merriweather', 'serif'],
         ubuntu: ['Ubuntu', 'sans-serif'],
+        
       },
     },
   },
