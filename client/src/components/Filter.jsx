@@ -1,9 +1,16 @@
 import React from 'react'
-
+import useFetch from '../hook/useFetch'
+import { baseUrl } from '../baseUrl'
 const Filter = ({
     search,
-    handleSearch
+    handleSearch,
+    selectedCategory,
+    handleCategoryChange
 }) => {
+
+  const { data: categories, loading, error } = useFetch(`${baseUrl}/products/categories`)
+
+  console.log(categories) 
   return (
     <div className='w-full '>
         {/* Filter component for products table to filter products by category or name */}
@@ -18,14 +25,16 @@ const Filter = ({
 
               className='border border-gray-300 rounded-md px-3 py-2 mr-3'
             />
-            <select
-              className='border border-gray-300 rounded-md px-3 py-2'
-            >
-              <option value=''>All Categories</option>
-              <option value=''>Category 1</option>
-              <option value=''>Category 2</option>
-              <option value=''>Category 3</option>
-            </select>
+             <select
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+            className='border border-gray-300 rounded-md px-3 py-2'
+          >
+            <option value=''>All Categories</option>
+            {categories.map((category, index) => (
+              <option key={index} value={category}>{category}</option>
+            ))}
+          </select>
           </div>
         </div>
     

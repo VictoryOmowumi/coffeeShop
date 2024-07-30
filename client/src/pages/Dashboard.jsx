@@ -1,15 +1,5 @@
 import React, { useState } from "react";
-import {
-  Chart as ChartJS,
-  LineElement,
-  PointElement,
-  LinearScale,
-  Title,
-  CategoryScale,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
+import ApexCharts from 'react-apexcharts';
 import {
   summaryData,
   recentOrders,
@@ -17,17 +7,6 @@ import {
   notifications,
   salesData,
 } from "../utils/dummyData";
-
-// Register Chart.js components
-ChartJS.register(
-  LineElement,
-  PointElement,
-  LinearScale,
-  Title,
-  CategoryScale,
-  Tooltip,
-  Legend
-);
 
 const Dashboard = () => {
   const username = "John Webster";
@@ -48,59 +27,85 @@ const Dashboard = () => {
 
   const filteredData = getFilteredData();
 
-  const chartData = {
-    labels: filteredData.map((data) => data.day),
-    datasets: [
-      {
-        label: "Sales",
-        data: filteredData.map((data) => data.sales),
-        fill: false,
-        backgroundColor: "#A0522D", 
-        borderColor: "#f5f5f5", 
-        pointBackgroundColor: "#A0522D", 
+ 
+  const chartOptions = {
+    chart: {
+      id: "area",
+      type: 'area',
+      foreColor: '#4a3f35',
+      toolbar: {
+        show: false,
       },
-    ],
+    },
+    xaxis: {
+      categories: filteredData.map((data) => data.day),
+      labels: {
+        style: {
+          colors: '#fff',
+          fontSize: '12px',
+         
+        },
+        offsetX: 2,
+      },
+      grid: {
+        show: false
+      },
+      axisTicks: {
+        show: false, 
+      },
+    },
+    yaxis: {
+      labels: {
+        style: {
+          colors: '#fff',
+          fontSize: '12px',
+         
+        },
+      },
+      grid: {
+        show: false
+      }
+    },
+    dataLabels: {
+      enabled: false,
+    },
+   
+    stroke: {
+      curve: 'smooth',
+      colors: ['#d4a373'],
+    },
+    fill: {
+      type: 'gradient',
+      gradient: {
+        shadeIntensity: 1,
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        colorStops: [
+          {
+            offset: 0,
+            color: '#f5e6c8',
+            opacity: 1,
+          },
+          {
+            offset: 100,
+            color: '#c1a57b',
+            opacity: 1,
+          },
+        ],
+      },
+    },
+    grid: {
+      show: false, // Remove grid lines
+    },
+    tooltip: {
+      theme: 'dark',
+    },
   };
 
-  const chartOptions = {
-    maintainAspectRatio: false,
-    scales: {
-      x: {
-        grid: {
-          display: false, 
-        },
-        ticks: {
-          color: "#f5f5f5", 
-        },
-      },
-      y: {
-        beginAtZero: true,
-        grid: {
-          display: false, 
-        },
-        ticks: {
-          color: "#f5f5f5", 
-          callback: (value) => `$${value}`,
-        },
-      },
-    },
-    plugins: {
-      legend: {
-        labels: {
-          color: "#f5f5f5", 
-        },
-      },
-      tooltip: {
-        backgroundColor: "#D2B48C", 
-        titleColor: "#F5F5F5", 
-        bodyColor: "#F5F5F5", 
-        callbacks: {
-          label: (tooltipItem) => `$${tooltipItem.raw}`, 
-        },
-      },
-    },
-  };
-  
+  const chartSeries = [{
+    name: "Sales",
+    data: filteredData.map((data) => data.sales),
+  }];
 
   return (
     <div className="px-5 py-3 bg-gray-100 flex-1">
@@ -111,7 +116,7 @@ const Dashboard = () => {
         {/* Top */}
         <div className="flex-[3] flex flex-col gap-5">
           <div className="flex w-full h-[400px] gap-5">
-            <div className="flex-[2] flex flex-col justify-between p-3 rounded-md bg-coffee">
+            <div className="flex-[2] flex flex-col justify-between p-2 rounded-md bg-coffee">
               <div className="flex justify-between">
                 <h2 className="text-xl font-bold text-white">
                   Sales Overview
@@ -126,23 +131,27 @@ const Dashboard = () => {
                   <option value="year">This Year</option>
                 </select>
               </div>
-              <div className="w-full h-4/5 flex">
-                <Line data={chartData} options={chartOptions} />
+              <div className="w-full h-4/5">
+                <ApexCharts
+                  options={chartOptions}
+                  series={chartSeries}
+                  type="area"
+                  height="100%"
+                  width="100%"
+                />
               </div>
             </div>
 
             <div className="grid grid-cols-1 w-[300px] gap-4">
-               {summaryData.map((data, index) => (
+              {summaryData.map((data, index) => (
                 <div
                   key={index}
                   className="p-4 border flex flex-col justify-between rounded-md text-coffee-dark bg-coffee-light  shadow-sm"
                 >
                   <div>
-
-                  <h2 className="">{data.title}</h2>
-                  <p className=" text-2xl font-bold">{data.amount}</p>
+                    <h2 className="">{data.title}</h2>
+                    <p className=" text-2xl font-bold">{data.amount}</p>
                   </div>
-                  
                   <p className="text-[12px] opacity-40 relative left-1/2">{data.lastUpdated}</p>
                 </div>
               ))}
@@ -189,29 +198,23 @@ const Dashboard = () => {
               {notifications.map((notification, index) => (
                 <li
                   key={index}
-                  className="bg-[#FAF9F6] rounded
-                   border-l-4 border-coffee-light p-3
-                  "
+                  className="bg-[#FAF9F6] rounded border-l-4 border-coffee-light p-3"
                 >
                   {notification}
                 </li>
               ))}
             </ul>
           </div>
-
-        
-            <div className="flex flex-col mt-5 gap-5">
-              <h2 className="text-xl font-bold">Top Products</h2>
-              <ul className="space-y-5">
-                {topProducts.map((product, index) => (
-                  <li  key={index}
-                  className="bg-[#FAF9F6] rounded
-                   border-l-4 border-coffee-light p-3
-                  ">{product}</li>
-                ))}
-              </ul>
-            </div>
-         
+          <div className="flex flex-col mt-5 gap-5">
+            <h2 className="text-xl font-bold">Top Products</h2>
+            <ul className="space-y-5">
+              {topProducts.map((product, index) => (
+                <li key={index} className="bg-[#FAF9F6] rounded border-l-4 border-coffee-light p-3">
+                  {product}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -219,3 +222,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+ 
