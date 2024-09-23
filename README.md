@@ -72,18 +72,15 @@ cd ../frontend
 npm start
 The application should now be running on http://localhost:3000 (frontend) and http://localhost:5000 (backend).
 
-Screenshots
-Provide visual examples of your application in action. Here are some screenshots:
-
 Dashboard Overview
 [Screenshot 2024-09-23 140125](https://github.com/user-attachments/assets/618440f6-4476-4f9e-b152-e0efbd15dc0c)
 Settings
 ![Screenshot 2024-09-23 140102](https://github.com/user-attachments/assets/c9061d6d-f76c-43a1-a05e-056ffd3dd6b0)
 Login Page
 ![Screenshot 2024-09-23 140222](https://github.com/user-attachments/assets/ecfeac8e-235f-4b0a-8a62-b132777c1d54)
-Orders
+Settings Page
 ![Screenshot 2024-09-23 140203](https://github.com/user-attachments/assets/ae3aa82c-8630-4362-8556-8319fe4220c0)
-
+Orders Page
 .![Screenshot 2024-09-23 140144](https://github.com/user-attachments/assets/f5b18c25-1f9a-4278-ac76-cd73b6e80137)
 API Endpoints
 Here are some of the key API endpoints used in the backend:
@@ -98,20 +95,6 @@ GET /api/orders: Fetch all orders.
 POST /api/orders: Create a new order.
 GET /api/customers: Fetch all customers.
 POST /api/customers: Register a new customer
-
-Note: Add more details about the API routes and payload structures if needed.
-
-Contributing
-Feel free to contribute to this project by submitting a pull request. For major changes, please open an issue first to discuss what you would like to change.
-
-Fork the project.
-Create your feature branch: git checkout -b feature/your-feature
-Commit your changes: git commit -m 'Add some feature'
-Push to the branch: git push origin feature/your-feature
-Open a pull request.
-
-This project is licensed under the MIT Licens!
-
 
 
 
