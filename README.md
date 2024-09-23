@@ -34,7 +34,7 @@ Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/yourusername/coffee-shop-app.git
+git clone https://github.com/VictoryOmowumi/coffeeShop.git
 cd coffee-shop-app
 Install backend dependencies:
 
