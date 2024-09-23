@@ -3,7 +3,8 @@ const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
-const seedDatabase = require('./seeding');
+const customerRoutes = require('./routes/customerRoutes');
+
 const cors = require('cors');
 require('dotenv').config();
 
@@ -21,6 +22,7 @@ app.use(cors());
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/customers', customerRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

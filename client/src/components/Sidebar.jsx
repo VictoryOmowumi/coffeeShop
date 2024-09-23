@@ -2,7 +2,7 @@ import React from "react";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { LiaBoxesSolid } from "react-icons/lia";
 import { HiOutlineUserGroup } from "react-icons/hi2";
-import { IoSettingsOutline } from "react-icons/io5";
+import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
 import { BsCartCheck } from "react-icons/bs";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
@@ -15,11 +15,17 @@ const Sidebar = () => {
     { to: "/orders", icon: <BsCartCheck size={24} />, text: "Orders" },
     { to: "/customers", icon: <HiOutlineUserGroup size={24} />, text: "Customers" },
     { to: "/settings", icon: <IoSettingsOutline size={24} />, text: "Settings" },
+    
   ];
 
   const activeLink = location.pathname === "/" ? 0 : links.findIndex((link) => link.to === location.pathname);
 
+  const handleLogout = () => {
+  localStorage.removeItem("token");
+  window.location.href = "/login";
+};
   return (
+
     <div className="sticky top-0 h-screen bg-white w-28 flex flex-col p-4"
       style={{
         boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
@@ -43,6 +49,15 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
+          <li>
+            <div
+              onClick={handleLogout}
+              className="flex flex-col justify-center gap-2 items-center text-sm transition-all duration-300 cursor-pointer text-coffee"
+            >
+              <span><IoLogOutOutline size={24} /></span>
+              <span>Logout</span>
+            </div>
+            </li>
         </ul>
       </nav>
     </div>

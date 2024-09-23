@@ -3,13 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {OrderProvider} from './context/OrderContext';
+import { NotificationProvider } from './context/NotificationContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
-      <Routes>
-        <Route path="/*" element={<App />} />
-      </Routes>
+      <OrderProvider>
+        <NotificationProvider>
+          <Routes>
+            <Route path="/*" element={<App />} />
+          </Routes>
+        </NotificationProvider>
+      </OrderProvider>
     </Router>
   </React.StrictMode>
 );

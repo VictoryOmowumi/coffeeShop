@@ -1,12 +1,16 @@
 import React from 'react'
 import { CiSearch } from "react-icons/ci";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { LuUserCircle } from "react-icons/lu";
-import { notifications } from '../utils/dummyData';
+import { useNotifications } from '../context/NotificationContext';
+import tokenDecode from '../utils/tokenDecode';
 const Header = () => {
+ const { notifications } = useNotifications();
   const unreadNotifications = notifications.length;
-  const userName = 'John Webster';
+  const userDetail = tokenDecode();
+  const userName = userDetail?.name;
   const initials = userName.split(' ').map(name => name[0]).join('');
+
+
   return (
     <header className='flex justify-between items-center py-4 px-5 bg-white text-coffee-dark border-b border-gray-200'>
         <div className='flex items-center gap-4 border rounded-md w-1/2 p-3'>
@@ -26,7 +30,9 @@ const Header = () => {
                <div className='bg-coffee text-cream-light h-10 w-10 flex justify-center items-center rounded-full'>
                     {initials}
                 </div>  
-                <span>John Webster</span>
+                <span>
+                    {userName}
+                </span>
           </div>
         </div>
     </header>

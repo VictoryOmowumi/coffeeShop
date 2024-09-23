@@ -1,9 +1,6 @@
 // utils/dummyData.js
 
 export const summaryData = [
-    // totalSales: '$12,340',
-    // orders: 120,
-    // productsInStock: 230,
     {
       title: 'Total Sales',
       amount: '$12,340',
