@@ -76,13 +76,13 @@ Screenshots
 Provide visual examples of your application in action. Here are some screenshots:
 
 Dashboard Overview
-
+[Screenshot 2024-09-23 140125](https://github.com/user-attachments/assets/618440f6-4476-4f9e-b152-e0efbd15dc0c)
 Products Management
-
+![Screenshot 2024-09-23 140102](https://github.com/user-attachments/assets/c9061d6d-f76c-43a1-a05e-056ffd3dd6b0)
 Orders Page
-
+![Screenshot 2024-09-23 140222](https://github.com/user-attachments/assets/ecfeac8e-235f-4b0a-8a62-b132777c1d54)
 Customer Registration
-
+![Screenshot 2024-09-23 140203](https://github.com/user-attachments/assets/ae3aa82c-8630-4362-8556-8319fe4220c0)
 API Endpoints
 Here are some of the key API endpoints used in the backend:
 
@@ -107,9 +107,10 @@ Create your feature branch: git checkout -b feature/your-feature
 Commit your changes: git commit -m 'Add some feature'
 Push to the branch: git push origin feature/your-feature
 Open a pull request.
-License
-This project is licensed under the MIT Licens![Screenshot 2024-09-23 140125](https://github.com/user-attachments/assets/618440f6-4476-4f9e-b152-e0efbd15dc0c)
-![Screenshot 2024-09-23 140102](https://github.com/user-attachments/assets/c9061d6d-f76c-43a1-a05e-056ffd3dd6b0)
-![Screenshot 2024-09-23 140222](https://github.com/user-attachments/assets/ecfeac8e-235f-4b0a-8a62-b132777c1d54)
-![Screenshot 2024-09-23 140203](https://github.com/user-attachments/assets/ae3aa82c-8630-4362-8556-8319fe4220c0)
-e. See the LICENSE file for details.
+
+This project is licensed under the MIT Licens!
+
+
+
+
+
