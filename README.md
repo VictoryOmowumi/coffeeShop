@@ -83,6 +83,8 @@ Login Page
 ![Screenshot 2024-09-23 140222](https://github.com/user-attachments/assets/ecfeac8e-235f-4b0a-8a62-b132777c1d54)
 Orders
 ![Screenshot 2024-09-23 140203](https://github.com/user-attachments/assets/ae3aa82c-8630-4362-8556-8319fe4220c0)
+
+.![Screenshot 2024-09-23 140144](https://github.com/user-attachments/assets/f5b18c25-1f9a-4278-ac76-cd73b6e80137)
 API Endpoints
 Here are some of the key API endpoints used in the backend:
 
@@ -95,7 +97,7 @@ DELETE /api/products/
 GET /api/orders: Fetch all orders.
 POST /api/orders: Create a new order.
 GET /api/customers: Fetch all customers.
-POST /api/customers: Register a new customer.![Screenshot 2024-09-23 140144](https://github.com/user-attachments/assets/f5b18c25-1f9a-4278-ac76-cd73b6e80137)
+POST /api/customers: Register a new customer
 
 Note: Add more details about the API routes and payload structures if needed.
 
