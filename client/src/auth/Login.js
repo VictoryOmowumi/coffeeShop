@@ -9,7 +9,7 @@ import coffeebg from "../assets/coffee-bg.png"
 import {FiEye, FiEyeOff} from "react-icons/fi"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AuthContext from "./AuthContext";
+import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -46,8 +46,9 @@ const Login = () => {
 
       setSubmitting(false);
       const result = await response.json();
-      login(result.token);
-      localStorage.setItem("token", result.token);
+      const token = result.token;
+      login(token);
+      // localStorage.setItem("token", token);
       setLoading(false);
       setError(null);
       toast.success("Login successful", {

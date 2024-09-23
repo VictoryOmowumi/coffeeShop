@@ -6,13 +6,13 @@ import { baseUrl } from "../baseUrl";
 import { ToastContainer, toast } from "react-toastify";
 import useFetch from "../hook/useFetch";
 import "react-toastify/dist/ReactToastify.css";
-
+import { useNavigate } from "react-router-dom";
 const CreateOrderForm = ({ onOrderCreated, showForm, setShowForm }) => {
   const { productList, addProduct, clearProducts, formState, updateFormState } =
     useOrder();
   const { data: products } = useFetch(`${baseUrl}/products`);
   const { data: customers } = useFetch(`${baseUrl}/customers`);
-
+  const navigate = useNavigate();
   useEffect(() => {
     updateFormState({
       date: new Date().toISOString().split("T")[0],
@@ -75,7 +75,7 @@ const CreateOrderForm = ({ onOrderCreated, showForm, setShowForm }) => {
         toast.success("Order created successfully", {
           onClose: () => {
             setShowForm(false);
-            window.location.reload();
+            navigate(`/orders`);
           },
         });
         clearProducts();
